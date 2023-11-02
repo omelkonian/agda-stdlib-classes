@@ -1,0 +1,4 @@
+name: standard-library-classes
+depend: standard-library
+include: .
+flags: --safe --without-K
