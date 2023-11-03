@@ -5,12 +5,6 @@ open import Class.Core
 
 private variable a b c : Level
 
-{-
-Functor : (Type ℓ → Type ℓ) → Type (lsuc ℓ)
-Functor {ℓ = ℓ} = RawFunctor {ℓ = ℓ} {ℓ′ = ℓ}
-open RawFunctor ⦃...⦄ public
--}
-
 record Functor (F : Type↑) : Typeω where
   infixl 4 _<$>_ _<$_
   infixl 1 _<&>_
