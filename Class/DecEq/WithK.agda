@@ -1,18 +1,10 @@
-{-# OPTIONS --safe #-}
+{-# OPTIONS --with-K #-}
 module Class.DecEq.WithK where
 
-open import Agda.Primitive using () renaming (Set to Type)
-open import Level using (Level)
-open import Data.Product
-open import Relation.Nullary
-open import Relation.Nullary.Decidable
-open import Relation.Binary.PropositionalEquality
-
+open import Class.Prelude
 open import Class.DecEq.Core
 
-private variable ℓ ℓ′ : Level
-
-module _ {A : Type ℓ} ⦃ _ : DecEq A ⦄ where
+module _ ⦃ _ : DecEq A ⦄ where
   ≟-refl : ∀ (x : A) → (x ≟ x) ≡ yes refl
   ≟-refl x with refl , p ← dec-yes (x ≟ x) refl = p
 

@@ -7,6 +7,8 @@ open import Level public
 open import Function public
   using (id; _∘_; _∋_; _$_; const; constᵣ; flip)
 
+open import Data.Empty public
+  using (⊥; ⊥-elim)
 open import Data.Unit public
   using (⊤; tt)
 open import Data.Product public
@@ -14,7 +16,7 @@ open import Data.Product public
 open import Data.Sum public
   using (_⊎_; inj₁; inj₂)
 open import Data.Bool public
-  using (Bool; true; false; not; if_then_else_)
+  using (Bool; true; false; not; if_then_else_; T)
 open import Data.Nat public
   using (ℕ; zero; suc)
 open import Data.Fin as Fin public
@@ -39,12 +41,21 @@ open import Data.These public
   using (These; this; that; these)
 
 open import Relation.Nullary public
-  using (yes; no)
+  using (Dec; yes; no)
 open import Relation.Nullary.Decidable public
   using (⌊_⌋; dec-yes)
+open import Relation.Unary public
+  using (Pred)
+  renaming (Decidable to Decidable¹)
 open import Relation.Binary public
-  using (Rel; DecidableEquality)
+  using (REL; Rel; DecidableEquality)
   renaming (Decidable to Decidable²)
+module _ {a b c} where
+  3REL : (A : Set a) (B : Set b) (C : Set c) (ℓ : Level) → Type _
+  3REL A B C ℓ = A → B → C → Type ℓ
+
+  Decidable³ : ∀ {A B C ℓ} → 3REL A B C ℓ → Type _
+  Decidable³ _~_~_ = ∀ x y z → Dec (x ~ y ~ z)
 open import Relation.Binary.PropositionalEquality public
   using (_≡_; refl; sym; cong)
 

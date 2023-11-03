@@ -4,15 +4,6 @@ open import Class.Prelude
 open import Class.Core
 open import Class.Functor.Core
 
-{-
-Applicative : (Type ℓ → Type ℓ) → Type (lsuc ℓ)
-Applicative {ℓ = ℓ} = RawApplicative {f = ℓ}
-open RawApplicative ⦃...⦄ public
-  using (pure)
-  renaming ( _⊛_ to _<*>_; _<⊛_ to _<*_ ; _⊛>_ to _*>_)
--}
-
--- record Applicative (F : Type ℓ → Type ℓ′) : Type (lsuc ℓ ⊔ₗ ℓ′) where
 record Applicative (F : Type↑) : Typeω where
   infixl 4 _<*>_ _⊛_ _<*_ _<⊛_ _*>_ _⊛>_
   infix  4 _⊗_
@@ -51,8 +42,7 @@ open Applicative₀ ⦃...⦄ public
 record Alternative (F : Type↑) : Typeω where
   infixr 3 _<|>_
   field _<|>_ : F A → F A → F A
-    -- overlap ⦃ ap₀ ⦄ : Applicative₀ F
-open Alternative ⦃...⦄ {- hiding (ap₀) -} public
+open Alternative ⦃...⦄ public
 
 infix -1 ⋃⁺_ ⋃_
 

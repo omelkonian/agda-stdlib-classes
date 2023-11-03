@@ -1,10 +1,11 @@
 module Class.Monad.Core where
 
 open import Class.Prelude
+open import Class.Core
 open import Class.Functor
 open import Class.Applicative
 
-record Monad (M : ∀ {a} → Type a → Type a) : Typeω where
+record Monad (M : Type↑) : Typeω where
   infixl 1 _>>=_ _>>_ _>=>_
   infixr 1 _=<<_ _<=<_
 
