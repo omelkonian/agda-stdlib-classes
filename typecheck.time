@@ -1,11 +1,11 @@
-TOTAL: 0m19s
-Class/Prelude: 0m10s
+TOTAL: 0m20s
+Class/Prelude: 0m11s
 Class/Semigroup/Core: 0m0s
 Class/Semigroup/Instances: 0m1s
 Class/Semigroup: 0m0s
 Class/Monoid/Core: 0m0s
-Class/Monoid/Instances: 0m1s
-Class/Monoid: 0m0s
+Class/Monoid/Instances: 0m0s
+Class/Monoid: 0m1s
 Class/Core: 0m0s
 Class/Functor/Core: 0m0s
 Class/Functor/Instances: 0m0s
