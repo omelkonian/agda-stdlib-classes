@@ -1,7 +1,7 @@
 name: CI
 on:
   schedule: [{cron: '0 0 * * *'}]
-  push: {branches: master}
+  push: {branches: [master, stdlib-v2]}
   pull_request:
 jobs:
   build-deploy:
@@ -11,7 +11,7 @@ jobs:
       - uses: omelkonian/setup-agda@master
         with:
           agda-version: 2.6.4
-          stdlib-version: 1.7.3
+          stdlib-version: 2.0-rc1
           main: Classes
           deploy: ${{ github.ref == 'refs/heads/master' }}
           token: ${{ secrets.GITHUB_TOKEN }}
