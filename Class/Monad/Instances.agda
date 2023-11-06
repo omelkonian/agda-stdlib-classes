@@ -6,7 +6,7 @@ open import Class.Monad.Core
 instance
   Monad-TC : Monad TC
   Monad-TC = record {R}
-    where import Reflection as R
+    where import Reflection as R renaming (pure to return)
 
   Monad-List : Monad List
   Monad-List = λ where

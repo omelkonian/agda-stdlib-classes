@@ -38,20 +38,17 @@ instance
   Functor-Vec = record {V}
     where import Data.Vec as V renaming (map to _<$>_)
 
-  open import Reflection
-  open import Reflection.Meta
-
   Functor-TC : Functor TC
   Functor-TC = record {R}
-    where import Reflection.TypeChecking.Monad.Syntax as R
+    where import Reflection.TCM.Syntax as R
 
   Functor-Abs : Functor Abs
   Functor-Abs = record {R}
-    where import Reflection.Abstraction as R renaming (map to _<$>_)
+    where import Reflection.AST.Abstraction as R renaming (map to _<$>_)
 
   Functor-Arg : Functor Arg
   Functor-Arg = record {R}
-    where import Reflection.Argument as R renaming (map to _<$>_)
+    where import Reflection.AST.Argument as R renaming (map to _<$>_)
 
   Functor-∃Vec : Functor (∃ ∘ Vec)
   Functor-∃Vec ._<$>_ f (_ , xs) = -, (f <$> xs)

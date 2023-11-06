@@ -37,7 +37,7 @@ instance
 
   Applicative-Vec : ∀ {n} → Applicative (flip Vec n)
   Applicative-Vec = λ where
-    .pure → V.replicate
+    .pure → V.replicate _
     ._<*>_ → V._⊛_
    where import Data.Vec as V
 
@@ -50,10 +50,12 @@ instance
   --   .pure x → 1 , pure x
   --   ._<*>_ (n , xs) (m , ys) → {! (n ⊔ m) , zipWith _$_ xs ys  -- (+ zipWith-⊔ lemma) !}
 
+  module M where
+    open import Reflection.TCM.Syntax public
+    open import Reflection.TCM public
+
   Alternative-TC : Alternative TC
   Alternative-TC = record {M}
-    where import Reflection.TypeChecking.Monad.Syntax as M
 
   Applicative-TC : Applicative TC
   Applicative-TC = record {M}
-    where import Reflection.TypeChecking.Monad.Syntax as M

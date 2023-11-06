@@ -34,8 +34,8 @@ instance
     where import Data.Float as M
 
 open import Reflection
-open import Reflection.Term
-open import Reflection.Meta
+open import Reflection.AST.Term
+open import Reflection.AST.Meta
 
 instance
   Show-Name = mkShow showName

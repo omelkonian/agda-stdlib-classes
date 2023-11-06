@@ -11,17 +11,16 @@ instance
   Dec-⊤ : ⊤ ⁇
   Dec-⊤ .dec = yes tt
 
+  open import Relation.Nullary.Decidable as D
+
   Dec-→ : ⦃ A ⁇ ⦄ → ⦃ B ⁇ ⦄ → (A → B) ⁇
-  Dec-→ .dec = dec →-dec dec
-    where open import Relation.Nullary.Implication using (_→-dec_)
+  Dec-→ .dec = dec D.→-dec dec
 
   Dec-× : ⦃ A ⁇ ⦄ → ⦃ B ⁇ ⦄ → (A × B) ⁇
-  Dec-× .dec = dec ×-dec dec
-    where open import Relation.Nullary.Product using (_×-dec_)
+  Dec-× .dec = dec D.×-dec dec
 
   Dec-⊎ : ⦃ A ⁇ ⦄ → ⦃ B ⁇ ⦄ → (A ⊎ B) ⁇
-  Dec-⊎ .dec = dec ⊎-dec dec
-    where open import Relation.Nullary.Sum using (_⊎-dec_)
+  Dec-⊎ .dec = dec D.⊎-dec dec
 
   DecEq⇒Dec : ⦃ DecEq A ⦄ → _≡_ {A = A} ⁇²
   DecEq⇒Dec .dec = _ ≟ _
