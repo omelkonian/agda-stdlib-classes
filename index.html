@@ -1,20 +1,30 @@
 <!DOCTYPE HTML>
-<html><head><meta charset="utf-8"><title>Classes</title><link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.3/gh-fork-ribbon.min.css'/><style>.github-fork-ribbon:before { background-color: #333; }</style><link rel="stylesheet" href="css/Agda.css"></head><body><a class='github-fork-ribbon'href='https://github.com/omelkonian/agda-stdlib-classes/tree/master/'data-ribbon='Source code on Github' title='Source code on Github'>Source code on Github</a><pre class="Agda"><a id="1" class="Keyword">module</a> <a id="8" href="Classes.html" class="Module">Classes</a> <a id="16" class="Keyword">where</a>
+<html><head><meta charset="utf-8"><title>Classes</title><link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.3/gh-fork-ribbon.min.css'/><style>.github-fork-ribbon:before { background-color: #333; }</style><link rel="stylesheet" href="css/Agda.css"></head><body><a class='github-fork-ribbon'href='https://github.com/omelkonian/agda-stdlib-classes/tree/master/'data-ribbon='Source code on Github' title='Source code on Github'>Source code on Github</a><pre class="Agda"><a id="1" class="Symbol">{-#</a> <a id="5" class="Keyword">OPTIONS</a> <a id="13" class="Pragma">--with-K</a> <a id="22" class="Symbol">#-}</a>
+<a id="26" class="Keyword">module</a> <a id="33" href="Classes.html" class="Module">Classes</a> <a id="41" class="Keyword">where</a>
 
-<a id="23" class="Comment">-- ** Algebraic structures</a>
-<a id="50" class="Keyword">open</a> <a id="55" class="Keyword">import</a> <a id="62" href="Class.Semigroup.html" class="Module">Class.Semigroup</a> <a id="78" class="Keyword">public</a>
-<a id="85" class="Keyword">open</a> <a id="90" class="Keyword">import</a> <a id="97" href="Class.Monoid.html" class="Module">Class.Monoid</a> <a id="110" class="Keyword">public</a>
-<a id="117" class="Keyword">open</a> <a id="122" class="Keyword">import</a> <a id="129" href="Class.Functor.html" class="Module">Class.Functor</a> <a id="143" class="Keyword">public</a>
-<a id="150" class="Keyword">open</a> <a id="155" class="Keyword">import</a> <a id="162" href="Class.Bifunctor.html" class="Module">Class.Bifunctor</a> <a id="178" class="Keyword">public</a>
-<a id="185" class="Keyword">open</a> <a id="190" class="Keyword">import</a> <a id="197" href="Class.Applicative.html" class="Module">Class.Applicative</a> <a id="215" class="Keyword">public</a>
-<a id="222" class="Keyword">open</a> <a id="227" class="Keyword">import</a> <a id="234" href="Class.Monad.html" class="Module">Class.Monad</a> <a id="246" class="Keyword">public</a>
-<a id="253" class="Keyword">open</a> <a id="258" class="Keyword">import</a> <a id="265" href="Class.Traversable.html" class="Module">Class.Traversable</a> <a id="283" class="Keyword">public</a>
+<a id="48" class="Comment">-- ** Algebraic structures</a>
+<a id="75" class="Keyword">open</a> <a id="80" class="Keyword">import</a> <a id="87" href="Class.Semigroup.html" class="Module">Class.Semigroup</a> <a id="103" class="Keyword">public</a>
+<a id="110" class="Keyword">open</a> <a id="115" class="Keyword">import</a> <a id="122" href="Class.Monoid.html" class="Module">Class.Monoid</a> <a id="135" class="Keyword">public</a>
+<a id="142" class="Keyword">open</a> <a id="147" class="Keyword">import</a> <a id="154" href="Class.Functor.html" class="Module">Class.Functor</a> <a id="168" class="Keyword">public</a>
+<a id="175" class="Keyword">open</a> <a id="180" class="Keyword">import</a> <a id="187" href="Class.Bifunctor.html" class="Module">Class.Bifunctor</a> <a id="203" class="Keyword">public</a>
+<a id="210" class="Keyword">open</a> <a id="215" class="Keyword">import</a> <a id="222" href="Class.Applicative.html" class="Module">Class.Applicative</a> <a id="240" class="Keyword">public</a>
+<a id="247" class="Keyword">open</a> <a id="252" class="Keyword">import</a> <a id="259" href="Class.Monad.html" class="Module">Class.Monad</a> <a id="271" class="Keyword">public</a>
+<a id="278" class="Keyword">open</a> <a id="283" class="Keyword">import</a> <a id="290" href="Class.Foldable.html" class="Module">Class.Foldable</a> <a id="305" class="Keyword">public</a>
+<a id="312" class="Keyword">open</a> <a id="317" class="Keyword">import</a> <a id="324" href="Class.Traversable.html" class="Module">Class.Traversable</a> <a id="342" class="Keyword">public</a>
 
-<a id="291" class="Comment">-- ** Decidability</a>
-<a id="310" class="Keyword">open</a> <a id="315" class="Keyword">import</a> <a id="322" href="Class.DecEq.html" class="Module">Class.DecEq</a> <a id="334" class="Keyword">public</a>
-<a id="341" class="Keyword">open</a> <a id="346" class="Keyword">import</a> <a id="353" href="Class.Decidable.html" class="Module">Class.Decidable</a> <a id="369" class="Keyword">public</a>
+<a id="350" class="Comment">-- ** Decidability</a>
+<a id="369" class="Keyword">open</a> <a id="374" class="Keyword">import</a> <a id="381" href="Class.DecEq.html" class="Module">Class.DecEq</a> <a id="393" class="Keyword">public</a>
+<a id="400" class="Keyword">open</a> <a id="405" class="Keyword">import</a> <a id="412" href="Class.DecEq.WithK.html" class="Module">Class.DecEq.WithK</a> <a id="430" class="Keyword">public</a>
+<a id="437" class="Keyword">open</a> <a id="442" class="Keyword">import</a> <a id="449" href="Class.Decidable.html" class="Module">Class.Decidable</a> <a id="465" class="Keyword">public</a>
 
-<a id="377" class="Comment">-- ** Others</a>
-<a id="390" class="Keyword">open</a> <a id="395" class="Keyword">import</a> <a id="402" href="Class.Show.html" class="Module">Class.Show</a> <a id="413" class="Keyword">public</a>
-<a id="420" class="Keyword">open</a> <a id="425" class="Keyword">import</a> <a id="432" href="Class.Default.html" class="Module">Class.Default</a> <a id="446" class="Keyword">public</a>
+<a id="473" class="Comment">-- ** Others</a>
+<a id="486" class="Keyword">open</a> <a id="491" class="Keyword">import</a> <a id="498" href="Class.Show.html" class="Module">Class.Show</a> <a id="509" class="Keyword">public</a>
+<a id="516" class="Keyword">open</a> <a id="521" class="Keyword">import</a> <a id="528" href="Class.Default.html" class="Module">Class.Default</a> <a id="542" class="Keyword">public</a>
+
+<a id="550" class="Comment">-- ** Tests</a>
+<a id="562" class="Keyword">open</a> <a id="567" class="Keyword">import</a> <a id="574" href="Test.Monoid.html" class="Module">Test.Monoid</a>
+<a id="586" class="Keyword">open</a> <a id="591" class="Keyword">import</a> <a id="598" href="Test.Functor.html" class="Module">Test.Functor</a>
+<a id="611" class="Keyword">open</a> <a id="616" class="Keyword">import</a> <a id="623" href="Test.DecEq.html" class="Module">Test.DecEq</a>
+<a id="634" class="Keyword">open</a> <a id="639" class="Keyword">import</a> <a id="646" href="Test.Decidable.html" class="Module">Test.Decidable</a>
+<a id="661" class="Keyword">open</a> <a id="666" class="Keyword">import</a> <a id="673" href="Test.Show.html" class="Module">Test.Show</a>
 </pre></body></html>
