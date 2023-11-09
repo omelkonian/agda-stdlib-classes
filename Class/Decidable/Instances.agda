@@ -27,7 +27,7 @@ instance
 
   import Data.Bool as 𝔹
 
-  Dec-T : ∀ {t} → T t ⁇
+  Dec-T : T ⁇¹
   Dec-T .dec = 𝔹.T? _
 
   import Data.List.Relation.Unary.All as L
@@ -60,21 +60,8 @@ instance
   import Data.Maybe.Relation.Unary.All as M renaming (dec to all?)
   import Data.Maybe.Relation.Unary.Any as M renaming (dec to any?)
 
-  Dec-MAll : ⦃ _ : P¹ ⁇¹ ⦄ → M.All P¹ ⁇¹
+  Dec-MAll : ⦃ P¹ ⁇¹ ⦄ → M.All P¹ ⁇¹
   Dec-MAll .dec = M.all? dec¹ _
 
-  Dec-MAny : ⦃ _ : P¹ ⁇¹ ⦄ → M.Any P¹ ⁇¹
+  Dec-MAny : ⦃ P¹ ⁇¹ ⦄ → M.Any P¹ ⁇¹
   Dec-MAny .dec = M.any? dec¹ _
-
-private
-  open import Data.List.Membership.Propositional using (_∈_; _∉_)
-  open import Class.DecEq.Instances
-
-  0⋯2 = List ℕ ∋ 0 ∷ 1 ∷ 2 ∷ []
-
-  _ = 1 ∈ 0⋯2
-    ∋ auto
-  _ = 3 ∉ 0⋯2
-    ∋ auto
-  f = (3 ∈ 0⋯2 → 2 ≡ 3)
-    ∋ contradict

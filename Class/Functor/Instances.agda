@@ -52,14 +52,3 @@ instance
 
   Functor-∃Vec : Functor (∃ ∘ Vec)
   Functor-∃Vec ._<$>_ f (_ , xs) = -, (f <$> xs)
-
-_ = fmap suc (just 0) ≡ just 1
-  ∋ refl
-_ = fmap suc (List ℕ ∋ 0 ∷ 1 ∷ 2 ∷ []) ≡ (1 ∷ 2 ∷ 3 ∷ [])
-  ∋ refl
-_ = fmap suc (List⁺ ℕ ∋ 0 ∷ 1 ∷ 2 ∷ []) ≡ (1 ∷ 2 ∷ 3 ∷ [])
-  ∋ refl
-_ = fmap suc (Vec ℕ 3 ∋ 0 ∷ 1 ∷ 2 ∷ []) ≡ (1 ∷ 2 ∷ 3 ∷ [])
-  ∋ refl
-_ = fmap suc (∃ (Vec ℕ) ∋ -, 0 ∷ 1 ∷ 2 ∷ []) ≡ (-, 1 ∷ 2 ∷ 3 ∷ [])
-  ∋ refl

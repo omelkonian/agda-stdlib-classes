@@ -17,3 +17,10 @@ open import Class.Decidable public
 -- ** Others
 open import Class.Show public
 open import Class.Default public
+
+-- ** Tests
+open import Test.Monoid
+open import Test.Functor
+open import Test.DecEq
+open import Test.Decidable
+open import Test.Show

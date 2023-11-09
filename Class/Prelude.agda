@@ -5,7 +5,7 @@ open import Agda.Primitive public
 open import Level public
   using (Level; _⊔_) renaming (suc to lsuc)
 open import Function public
-  using (id; _∘_; _∋_; _$_; const; constᵣ; flip)
+  using (id; _∘_; _∋_; _$_; const; constᵣ; flip; it)
 
 open import Data.Empty public
   using (⊥; ⊥-elim)
@@ -64,9 +64,7 @@ open import Reflection public
 
 variable
   ℓ ℓ′ ℓ″ : Level
-  A : Type ℓ
-  B : Type ℓ′
-  C : Type ℓ″
+  A B C : Type ℓ
 
 module Alg (_~_ : Rel A ℓ) where
   open import Algebra.Definitions _~_ public
