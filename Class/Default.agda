@@ -2,6 +2,7 @@
 -- Types with a default value.
 ------------------------------------------------------------------------
 
+{-# OPTIONS --without-K #-}
 module Class.Default where
 
 open import Class.Prelude

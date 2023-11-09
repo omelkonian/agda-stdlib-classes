@@ -1,3 +1,4 @@
+{-# OPTIONS --without-K #-}
 module Class.Foldable.Instances where
 
 open import Class.Prelude

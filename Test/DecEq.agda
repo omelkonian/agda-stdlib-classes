@@ -1,3 +1,4 @@
+{-# OPTIONS --without-K #-}
 module Test.DecEq where
 
 open import Class.Prelude

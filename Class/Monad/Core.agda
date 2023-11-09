@@ -1,3 +1,4 @@
+{-# OPTIONS --without-K #-}
 module Class.Monad.Core where
 
 open import Class.Prelude

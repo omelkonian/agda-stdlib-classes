@@ -1,3 +1,4 @@
+{-# OPTIONS --without-K #-}
 module Class.Monoid.Core where
 
 open import Class.Prelude

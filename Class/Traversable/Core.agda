@@ -1,3 +1,4 @@
+{-# OPTIONS --without-K #-}
 module Class.Traversable.Core where
 
 open import Class.Prelude

@@ -1,3 +1,4 @@
+{-# OPTIONS --without-K #-}
 module Class.Decidable where
 
 open import Class.Decidable.Core public

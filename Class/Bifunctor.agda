@@ -1,9 +1,10 @@
+{-# OPTIONS --without-K #-}
 module Class.Bifunctor where
 
 open import Class.Prelude hiding (A; B; C)
+open import Class.Core
 import Data.Product as ×
 import Data.Sum     as ⊎
-open import Class.Core
 
 private variable
   a b : Level

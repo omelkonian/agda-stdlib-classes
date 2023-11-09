@@ -1,3 +1,4 @@
+{-# OPTIONS --without-K #-}
 module Class.Decidable.Core where
 
 open import Class.Prelude

@@ -1,3 +1,4 @@
+{-# OPTIONS --with-K #-}
 module Classes where
 
 -- ** Algebraic structures
@@ -12,6 +13,7 @@ open import Class.Traversable public
 
 -- ** Decidability
 open import Class.DecEq public
+open import Class.DecEq.WithK public
 open import Class.Decidable public
 
 -- ** Others

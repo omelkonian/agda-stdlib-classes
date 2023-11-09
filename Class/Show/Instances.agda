@@ -1,3 +1,4 @@
+{-# OPTIONS --without-K #-}
 module Class.Show.Instances where
 
 open import Class.Prelude hiding (Type)

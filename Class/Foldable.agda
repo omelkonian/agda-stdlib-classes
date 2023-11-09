@@ -1,3 +1,4 @@
+{-# OPTIONS --without-K #-}
 module Class.Foldable where
 
 open import Class.Foldable.Core public

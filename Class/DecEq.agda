@@ -1,3 +1,4 @@
+{-# OPTIONS --without-K #-}
 module Class.DecEq where
 
 open import Class.DecEq.Core public

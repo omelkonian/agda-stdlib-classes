@@ -1,3 +1,4 @@
+{-# OPTIONS --without-K #-}
 module Class.Core where
 
 open import Class.Prelude
