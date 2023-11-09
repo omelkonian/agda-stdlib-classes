@@ -4,6 +4,7 @@ open import Class.Prelude
 
 open import Class.DecEq.Core
 
+-- ** basic types
 instance
   DecEq-⊤ = DecEq _ ∋ record {M}
     where import Data.Unit as M
@@ -31,12 +32,15 @@ instance
   DecEq-List ._≟_ = M.≡-dec _≟_
     where import Data.List.Properties as M
 
-  module _ ⦃ _ : DecEq A ⦄ where
-    private
-      ∷-injective : ∀ {x y xs ys} →
-        (List⁺ A ∋ x ∷ xs) ≡ y ∷ ys → x ≡ y × xs ≡ ys
-      ∷-injective refl = (refl , refl)
+-- ** containers of decidably equal elements
+module _ ⦃ _ : DecEq A ⦄ where
 
+  private
+    ∷-injective : ∀ {x y xs ys} →
+      (List⁺ A ∋ x ∷ xs) ≡ y ∷ ys → x ≡ y × xs ≡ ys
+    ∷-injective refl = (refl , refl)
+
+  instance
     DecEq-List⁺ : DecEq (List⁺ A)
     DecEq-List⁺ ._≟_ (x ∷ xs) (y ∷ ys)
       with x ≟ y
@@ -54,17 +58,18 @@ instance
     DecEq-Maybe ._≟_ = M.≡-dec _≟_
       where import Data.Maybe.Properties as M
 
-  module _ ⦃ _ : DecEq A ⦄ ⦃ _ : DecEq B ⦄ where
+module _ ⦃ _ : DecEq A ⦄ ⦃ _ : DecEq B ⦄ where instance
 
-    DecEq-⊎ : DecEq (A ⊎ B)
-    DecEq-⊎ ._≟_ = Sum.≡-dec _≟_ _≟_
-      where import Data.Sum.Properties as Sum
+  DecEq-⊎ : DecEq (A ⊎ B)
+  DecEq-⊎ ._≟_ = Sum.≡-dec _≟_ _≟_
+    where import Data.Sum.Properties as Sum
 
-    DecEq-These : DecEq (These A B)
-    DecEq-These ._≟_ = M.≡-dec _≟_ _≟_
-      where import Data.These.Properties as M
+  DecEq-These : DecEq (These A B)
+  DecEq-These ._≟_ = M.≡-dec _≟_ _≟_
+    where import Data.These.Properties as M
 
-  -- ** reflection
+-- ** reflection
+instance
 
   DecEq-Name = DecEq _ ∋ record {M}
     where import Reflection.AST.Name as M
