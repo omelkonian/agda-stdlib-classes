@@ -10,4 +10,4 @@ record Traversable (F : Type↑) ⦃ _ : Functor F ⦄ : Typeω where
 
   traverse : ⦃ Monad M ⦄ → (A → M B) → F A → M (F B)
   traverse f = sequence ∘ fmap f
-open Traversable ⦃... ⦄ public
+open Traversable ⦃...⦄ public
