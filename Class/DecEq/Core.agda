@@ -1,6 +1,7 @@
 module Class.DecEq.Core where
 
 open import Class.Prelude
+open import Class.Core
 
 record DecEq (A : Type ℓ) : Type ℓ where
   field _≟_ : DecidableEquality A
@@ -14,3 +15,7 @@ record DecEq (A : Type ℓ) : Type ℓ where
 
   infix 4 _≟_ _≡ᵇ_ _==_ _≠_
 open DecEq ⦃...⦄ public
+
+DecEq¹ = DecEq ¹
+DecEq² = DecEq ²
+DecEq³ = DecEq ³

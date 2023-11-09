@@ -1,4 +1,3 @@
-{-# OPTIONS --safe --without-K #-}
 module Class.Show.Instances where
 
 open import Class.Prelude hiding (Type)
@@ -26,7 +25,7 @@ instance
   Show-ℕ = Show _ ∋ record {M}
     where import Data.Nat.Show as M
 
-  Show-Fin : ∀ {n} → Show (Fin n)
+  Show-Fin : Show¹ Fin
   Show-Fin .show = ("# " ◇_) ∘ show ∘ toℕ
     where open import Data.Fin using (toℕ)
 

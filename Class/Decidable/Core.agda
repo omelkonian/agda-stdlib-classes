@@ -1,6 +1,7 @@
 module Class.Decidable.Core where
 
 open import Class.Prelude
+open import Class.Core
 
 open import Relation.Nullary.Decidable using (True; False; toWitness; toWitnessFalse)
 
@@ -19,10 +20,11 @@ open _⁇ ⦃ ... ⦄ public
 ¿_¿ : ∀ (X : Type ℓ) → ⦃ X ⁇ ⦄ → Dec X
 ¿ _ ¿ = dec
 
-module _ {A : Type ℓ} where
+_⁇¹ = _⁇ ¹
+_⁇² = _⁇ ²
+_⁇³ = _⁇ ³
 
-  _⁇¹ : Pred A ℓ′ → Type (ℓ ⊔ ℓ′)
-  P ⁇¹ = ∀ {x} → P x ⁇
+module _ {A : Type ℓ} where
 
   dec¹ : {P : Pred A ℓ′} → ⦃ P ⁇¹ ⦄ → Decidable¹ P
   dec¹ _ = dec
@@ -32,9 +34,6 @@ module _ {A : Type ℓ} where
 
 module _ {A B : Type ℓ} where
 
-  _⁇² : REL A B ℓ′ → Type (ℓ ⊔ ℓ′)
-  _~_ ⁇² = ∀ {x y} → (x ~ y) ⁇
-
   dec² : {_~_ : REL A B ℓ′} → ⦃ _~_ ⁇² ⦄ → Decidable² _~_
   dec² _ _ = dec
 
@@ -42,9 +41,6 @@ module _ {A B : Type ℓ} where
   ¿ _ ¿² = dec²
 
 module _ {A B C : Type ℓ} where
-
-  _⁇³ : (P : 3REL A B C ℓ′) → Type (ℓ ⊔ ℓ′)
-  _~_~_ ⁇³ = ∀ {x y z} → (x ~ y ~ z) ⁇
 
   dec³ : {_~_~_ : 3REL A B C ℓ′} → ⦃ _~_~_ ⁇³ ⦄ → Decidable³ _~_~_
   dec³ _ _ _ = dec
