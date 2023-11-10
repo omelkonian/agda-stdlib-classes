@@ -5,9 +5,17 @@ open import Class.Prelude
 open import Class.Decidable
 open import Class.DecEq
 
+import Data.Nat as ℕ
+_ = ℕ._≤_ ⁇² ∋ it
+_ = ℕ._<_ ⁇² ∋ it
+
+import Data.Integer as ℤ
+_ = ℤ._≤_ ⁇² ∋ it
+_ = ℤ._<_ ⁇² ∋ it
+
 open import Data.List.Membership.Propositional using (_∈_; _∉_)
 
-private 0⋯2 = List ℕ ∋ 0 ∷ 1 ∷ 2 ∷ []
+0⋯2 = List ℕ ∋ 0 ∷ 1 ∷ 2 ∷ []
 
 _ = 1 ∈ 0⋯2
   ∋ auto

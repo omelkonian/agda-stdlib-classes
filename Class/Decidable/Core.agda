@@ -37,26 +37,41 @@ _⁇³ = _⁇ ³
 
 module _ {A : Type ℓ} where
 
-  dec¹ : {P : Pred A ℓ′} → ⦃ P ⁇¹ ⦄ → Decidable¹ P
-  dec¹ _ = dec
+  module _ {P : Pred A ℓ′} where
+
+    dec¹ : ⦃ P ⁇¹ ⦄ → Decidable¹ P
+    dec¹ _ = dec
+
+    ⁇¹_ : Decidable¹ P → P ⁇¹
+    ⁇¹ p? = ⁇ (p? _)
 
   ¿_¿¹ : (P : Pred A ℓ′) → ⦃ P ⁇¹ ⦄ → Decidable¹ P
   ¿ _ ¿¹ = dec¹
 
 module _ {A B : Type ℓ} where
 
-  dec² : {_~_ : REL A B ℓ′} → ⦃ _~_ ⁇² ⦄ → Decidable² _~_
-  dec² _ _ = dec
+  module _ {R : REL A B ℓ′} where
 
-  ¿_¿² : (_~_ : REL A B ℓ′) → ⦃ _~_ ⁇² ⦄ → Decidable² _~_
+    dec² : ⦃ R ⁇² ⦄ → Decidable² R
+    dec² _ _ = dec
+
+    ⁇²_ : Decidable² R → R ⁇²
+    ⁇² p? = ⁇ (p? _ _)
+
+  ¿_¿² : (R : REL A B ℓ′) → ⦃ R ⁇² ⦄ → Decidable² R
   ¿ _ ¿² = dec²
 
 module _ {A B C : Type ℓ} where
 
-  dec³ : {_~_~_ : 3REL A B C ℓ′} → ⦃ _~_~_ ⁇³ ⦄ → Decidable³ _~_~_
-  dec³ _ _ _ = dec
+  module _ {R : 3REL A B C ℓ′} where
 
-  ¿_¿³ : (_~_~_ : 3REL A B C ℓ′) → ⦃ _~_~_ ⁇³ ⦄ → Decidable³ _~_~_
+    dec³ : ⦃ R ⁇³ ⦄ → Decidable³ R
+    dec³ _ _ _ = dec
+
+    ⁇³_ : Decidable³ R → R ⁇³
+    ⁇³_ p? = ⁇ (p? _ _ _)
+
+  ¿_¿³ : (R : 3REL A B C ℓ′) → ⦃ R ⁇³ ⦄ → Decidable³ R
   ¿ _ ¿³ = dec³
 
 infix -100 auto∶_
