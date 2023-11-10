@@ -44,9 +44,9 @@ open import Data.These public
   using (These; this; that; these)
 
 open import Relation.Nullary public
-  using (Dec; yes; no)
+  using (¬_; Dec; yes; no)
 open import Relation.Nullary.Decidable public
-  using (⌊_⌋; dec-yes)
+  using (⌊_⌋; dec-yes; isYes)
 open import Relation.Unary public
   using (Pred)
   renaming (Decidable to Decidable¹)
@@ -60,7 +60,7 @@ module _ {a b c} where
   Decidable³ : ∀ {A B C ℓ} → 3REL A B C ℓ → Type _
   Decidable³ _~_~_ = ∀ x y z → Dec (x ~ y ~ z)
 open import Relation.Binary.PropositionalEquality public
-  using (_≡_; refl; sym; cong)
+  using (_≡_; refl; sym; cong; subst)
 
 open import Reflection public
   using (TC; Arg; Abs)
