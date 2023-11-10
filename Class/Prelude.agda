@@ -24,6 +24,8 @@ open import Data.Fin as Fin public
   using (Fin; zero; suc)
 open import Data.Integer public
   using (ℤ; 0ℤ; 1ℤ)
+open import Data.Rational public
+  using (ℚ)
 open import Data.Float public
   using (Float)
 open import Data.Char public

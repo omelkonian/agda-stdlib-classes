@@ -8,6 +8,7 @@ _ = DecEq ⊤ ∋ it
 _ = DecEq Bool ∋ it
 _ = DecEq ℕ ∋ it
 _ = DecEq ℤ ∋ it
+_ = DecEq ℚ ∋ it
 _ = DecEq Char ∋ it
 _ = DecEq String ∋ it
 _ : DecEq¹ Fin; _ = it
