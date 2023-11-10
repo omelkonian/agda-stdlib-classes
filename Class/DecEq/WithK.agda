@@ -12,11 +12,12 @@ module Class.DecEq.WithK ⦃ _ : DecEq A ⦄ where
 
 ≡ᵇ-refl = ==-refl
 
-DecEq-Σ : ∀ {B : A → Type ℓ′} ⦃ _ : ∀ {x} → DecEq (B x) ⦄ → DecEq (Σ A B)
-DecEq-Σ ._≟_ (x , y) (x′ , y′)
-  with x ≟ x′
-... | no ¬p    = no λ where refl → ¬p refl
-... | yes refl
-  with y ≟ y′
-... | no ¬p    = no λ where refl → ¬p refl
-... | yes refl = yes refl
+instance
+  DecEq-Σ : ∀ {B : A → Type ℓ′} ⦃ _ : ∀ {x} → DecEq (B x) ⦄ → DecEq (Σ A B)
+  DecEq-Σ ._≟_ (x , y) (x′ , y′)
+    with x ≟ x′
+  ... | no ¬p    = no λ where refl → ¬p refl
+  ... | yes refl
+    with y ≟ y′
+  ... | no ¬p    = no λ where refl → ¬p refl
+  ... | yes refl = yes refl

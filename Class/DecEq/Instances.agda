@@ -43,14 +43,21 @@ module _ ⦃ _ : DecEq A ⦄ where instance
   DecEq-Maybe ._≟_ = M.≡-dec _≟_
     where import Data.Maybe.Properties as M
 
-module _ ⦃ _ : DecEq A ⦄ ⦃ _ : DecEq B ⦄ where instance
-  DecEq-⊎ : DecEq (A ⊎ B)
-  DecEq-⊎ ._≟_ = Sum.≡-dec _≟_ _≟_
-    where import Data.Sum.Properties as Sum
+module _ ⦃ _ : DecEq A ⦄ ⦃ _ : DecEq B ⦄ where
 
-  DecEq-These : DecEq (These A B)
-  DecEq-These ._≟_ = M.≡-dec _≟_ _≟_
-    where import Data.These.Properties as M
+  -- Not exported as instance so that users can also choose `Class.DecEq.WithK.DecEq-Σ`
+  DecEq-× : DecEq (A × B)
+  DecEq-× ._≟_ = ×.≡-dec _≟_ _≟_
+    where import Data.Product.Properties as ×
+
+  instance
+    DecEq-⊎ : DecEq (A ⊎ B)
+    DecEq-⊎ ._≟_ = ⊎.≡-dec _≟_ _≟_
+      where import Data.Sum.Properties as ⊎
+
+    DecEq-These : DecEq (These A B)
+    DecEq-These ._≟_ = M.≡-dec _≟_ _≟_
+      where import Data.These.Properties as M
 
 -- ** reflection
 instance
