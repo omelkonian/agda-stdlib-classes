@@ -6,6 +6,7 @@ open import Class.DecEq.Core
 
 -- ** basic types
 instance
+  DecEq-⊥      = DecEq ⊥ ∋ λ where ._≟_ ()
   DecEq-⊤      = DecEq _ ∋ record {M} where import Data.Unit as M
   DecEq-Bool   = DecEq _ ∋ record {M} where import Data.Bool as M
   DecEq-ℕ      = DecEq _ ∋ record {M} where import Data.Nat as M
