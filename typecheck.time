@@ -20,11 +20,11 @@ Class/Monad: 0m0s
 Class/Foldable/Core: 0m0s
 Class/Foldable/Instances: 0m0s
 Class/Foldable: 0m0s
-Class/Traversable/Core: 0m1s
+Class/Traversable/Core: 0m0s
 Class/Traversable/Instances: 0m0s
 Class/Traversable: 0m0s
 Class/DecEq/Core: 0m0s
-Class/DecEq/Instances: 0m0s
+Class/DecEq/Instances: 0m1s
 Class/DecEq: 0m0s
 Class/DecEq/WithK: 0m0s
 Class/Decidable/Core: 0m0s
