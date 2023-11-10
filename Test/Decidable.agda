@@ -5,6 +5,11 @@ open import Class.Prelude
 open import Class.Decidable
 open import Class.DecEq
 
+module _ {ℓ} {A : Set ℓ} where
+  open import Data.Maybe
+  _ = Is-just    {A = A} ⁇¹
+  _ = Is-nothing {A = A} ⁇¹
+
 import Data.Nat as ℕ
 _ = ℕ._≤_ ⁇² ∋ it
 _ = ℕ._<_ ⁇² ∋ it

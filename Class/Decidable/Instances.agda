@@ -90,16 +90,6 @@ instance
   Dec-MAny : ⦃ P ⁇¹ ⦄ → M.Any P ⁇¹
   Dec-MAny = ⁇¹ M.any? dec¹
 
-  Dec-Is-just : M.Is-just {A = A} ⁇¹
-  Dec-Is-just {x = x} .dec with x
-  ... | just _  = yes $ M.just _
-  ... | nothing = no λ ()
-
-  Dec-Is-nothing : M.Is-nothing {A = A} ⁇¹
-  Dec-Is-nothing {x = x} .dec with x
-  ... | just _  = no λ where (M.just ())
-  ... | nothing = yes M.nothing
-
   -- ** inequalities
 
   import Data.Nat.Properties as ℕ
