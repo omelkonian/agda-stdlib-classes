@@ -51,7 +51,7 @@ instance
   --   .pure x → 1 , pure x
   --   ._<*>_ (n , xs) (m , ys) → {! (n ⊔ m) , zipWith _$_ xs ys  -- (+ zipWith-⊔ lemma) !}
 
-  module M where
+  private module M where
     open import Reflection.TCM.Syntax public
     open import Reflection.TCM public
 
