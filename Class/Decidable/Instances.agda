@@ -101,3 +101,8 @@ instance
 
   ℤ-Dec-≤ = ⁇² ℤ._≤?_
   ℤ-Dec-< = ⁇² ℤ._<?_
+
+  import Data.Rational.Properties as Rat
+
+  ℚ-Dec-≤ = ⁇² Rat._≤?_
+  ℚ-Dec-< = ⁇² Rat._<?_
