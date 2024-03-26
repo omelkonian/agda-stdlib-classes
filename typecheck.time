@@ -14,11 +14,11 @@ Class/Bifunctor: 0m0s
 Class/Applicative/Core: 0m0s
 Class/Applicative/Instances: 0m0s
 Class/Applicative: 0m0s
-Class/Monad/Core: 0m0s
+Class/Monad/Core: 0m1s
 Class/Monad/Instances: 0m0s
 Class/Monad: 0m0s
 Class/Foldable/Core: 0m0s
-Class/Foldable/Instances: 0m1s
+Class/Foldable/Instances: 0m0s
 Class/Foldable: 0m0s
 Class/Traversable/Core: 0m0s
 Class/Traversable/Instances: 0m0s
