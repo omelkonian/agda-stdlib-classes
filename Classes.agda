@@ -19,6 +19,7 @@ open import Class.Decidable public
 -- ** Others
 open import Class.Show public
 open import Class.Default public
+open import Class.ToBool public
 
 -- ** Tests
 open import Test.Monoid
