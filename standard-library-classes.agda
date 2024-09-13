@@ -1,5 +1,5 @@
 {-# OPTIONS --with-K #-}
-module Classes where
+module standard-library-classes where
 
 -- ** Algebraic structures
 open import Class.Semigroup public
