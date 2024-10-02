@@ -4,6 +4,7 @@ module standard-library-classes where
 -- ** Algebraic structures
 open import Class.Semigroup public
 open import Class.Monoid public
+open import Class.CommutativeMonoid public
 open import Class.Functor public
 open import Class.Bifunctor public
 open import Class.Applicative public
