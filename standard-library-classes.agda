@@ -18,8 +18,10 @@ open import Class.DecEq.WithK public
 open import Class.Decidable public
 
 -- ** Others
-open import Class.Show public
 open import Class.Default public
+open import Class.HasAdd public
+open import Class.HasOrder public
+open import Class.Show public
 open import Class.ToBool public
 
 -- ** Tests
