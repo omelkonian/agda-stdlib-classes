@@ -43,6 +43,16 @@ module _ where
     instance _ = Monoid-ℕ-*
     MonoidLaws-ℕ-* = MonoidLaws≡ ℕ ∋ record {ε-identity = *-identityˡ , *-identityʳ}
 
+-- ** natural numbers
+module _ where
+  open import Data.Nat.Binary
+  open import Data.Nat.Binary.Properties
+
+  instance _ = Semigroup-ℕᵇ-+
+  Monoid-ℕᵇ-+ = Monoid ℕᵇ ∋ λ where .ε → zero
+  instance _ = Monoid-ℕᵇ-+
+  MonoidLaws-ℕᵇ-+ = MonoidLaws≡ ℕᵇ ∋ record {ε-identity = +-identityˡ , +-identityʳ}
+
 -- ** integers
 module _ where
   open import Data.Integer.Properties
