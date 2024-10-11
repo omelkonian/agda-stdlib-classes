@@ -1,10 +1,10 @@
 {-# OPTIONS --safe #-}
 
-module Class.HasOrder.Instances where
+module Class.HasOrder.Instance where
 
 open import Class.DecEq
 open import Class.Decidable
-open import Class.HasOrder
+open import Class.HasOrder.Core
 open import Data.Integer using (ℤ)
 open import Data.Nat using (ℕ)
 open import Data.Rational using (ℚ)
