@@ -56,6 +56,16 @@ module _ where
     record {◇-assocʳ = *-assoc; ◇-comm = *-comm}
     where instance _ = Semigroup-ℕ-*
 
+-- ** binary natural numbers
+module _ where
+  open import Data.Nat.Binary
+  open import Data.Nat.Binary.Properties
+
+  Semigroup-ℕᵇ-+ = Semigroup ℕᵇ ∋ λ where ._◇_ → _+_
+  SemigroupLaws-ℕᵇ-+ = SemigroupLaws ℕᵇ _≡_ ∋
+    record {◇-assocʳ = +-assoc; ◇-comm = +-comm}
+    where instance _ = Semigroup-ℕᵇ-+
+
 -- ** integers
 module _ where
   open import Data.Integer

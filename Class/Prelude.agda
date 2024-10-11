@@ -13,7 +13,7 @@ open import Data.Empty public
 open import Data.Unit public
   using (⊤; tt)
 open import Data.Product public
-  using (_×_; _,_; proj₁; proj₂; Σ; ∃; -,_)
+  using (_×_; _,_; proj₁; proj₂; Σ; ∃; ∃-syntax; -,_)
 open import Data.Sum public
   using (_⊎_; inj₁; inj₂)
 open import Data.Bool public

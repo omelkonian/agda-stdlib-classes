@@ -77,3 +77,6 @@ module _ {A B C : Type ℓ} where
 infix -100 auto∶_
 auto∶_ : ∀ (X : Type ℓ) → ⦃ X ⁇ ⦄ → Type
 auto∶_ A = True ¿ A ¿
+
+dec-✓ : ∀ {P : Type ℓ} ⦃ _ : P ⁇ ⦄ (p : P) → ∃[ p′ ] ¿ P ¿ ≡ yes p′
+dec-✓ = dec-yes ¿ _ ¿
