@@ -20,6 +20,9 @@ instance
   ℕ-hasPartialOrder = HasPartialOrder ∋ record
     { ≤-antisym = Nat.≤-antisym }
   ℕ-hasDecPartialOrder = HasDecPartialOrder {A = ℕ} ∋ record {}
+  ℕ-hasTotalOrder = HasTotalOrder ∋ record
+    { ≤-total = Nat.≤-total }
+  ℕ-hasDecTotalOrder = HasDecTotalOrder {A = ℕ} ∋ record {}
 
   import Data.Integer.Properties as Int hiding (_≟_)
   ℤ-hasPreorder = HasPreorder ∋ record {Int; ≤⇔<∨≈ = let open Int in mk⇔
@@ -27,9 +30,15 @@ instance
     [ <⇒≤ , ≤-reflexive ] }
   ℤ-hasPartialOrder = HasPartialOrder ∋ record { ≤-antisym = Int.≤-antisym }
   ℤ-hasDecPartialOrder = HasDecPartialOrder {A = ℤ} ∋ record {}
+  ℤ-hasTotalOrder = HasTotalOrder ∋ record
+    { ≤-total = Int.≤-total }
+  ℤ-hasDecTotalOrder = HasDecTotalOrder {A = ℤ} ∋ record {}
 
   import Data.Rational.Properties as Rat hiding (_≟_)
 
   ℚ-hasPreorder = hasPreorderFromNonStrict Rat.≤-isPreorder _≟_
   ℚ-hasPartialOrder = HasPartialOrder ∋ record { ≤-antisym = Rat.≤-antisym }
   ℚ-hasDecPartialOrder = HasDecPartialOrder {A = ℚ} ∋ record {}
+  ℚ-hasTotalOrder = HasTotalOrder ∋ record
+    { ≤-total = Rat.≤-total }
+  ℚ-hasDecTotalOrder = HasDecTotalOrder {A = ℚ} ∋ record {}
