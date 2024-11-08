@@ -85,9 +85,38 @@ module _ {a} {A : Set a} where
       <⇒¬>⊎≈ x<y (inj₁ y<x) = <-asymmetric x<y y<x
       <⇒¬>⊎≈ x<y (inj₂ x≈y) = <-irrefl (≈-sym x≈y) x<y
 
+      ≥⇒≮ : ∀ {x y} → y ≤ x → ¬ (x < y)
+      ≥⇒≮ y≤x x<y = contradiction (to ≤⇔<∨≈ y≤x) (<⇒¬>⊎≈ x<y)
+
+    open HasPartialOrder ⦃...⦄
+
     record HasDecPartialOrder : Set (suc a) where
       field
         ⦃ hasPartialOrder ⦄ : HasPartialOrder
+        ⦃ dec-≤ ⦄ : _≤_ ⁇²
+        ⦃ dec-< ⦄ : _<_ ⁇²
+
+    record HasTotalOrder : Set (suc a) where
+      field
+        ⦃ hasPartialOrder ⦄ : HasPartialOrder
+        ≤-total : Total _≤_
+
+      ≤-isTotalOrder : IsTotalOrder _≈_ _≤_
+      ≤-isTotalOrder = record { isPartialOrder = ≤-isPartialOrder ; total = ≤-total }
+
+      open IsEquivalence ≈-isEquivalence renaming (sym to ≈-sym)
+
+      ≮⇒≥ : Decidable _≈_ → ∀ {x y} → ¬ (x < y) → y ≤ x
+      ≮⇒≥ _≈?_ {x} {y} x≮y with x ≈? y | ≤-total y x
+      ... | yes x≈y  | _        = IsPreorder.reflexive ≤-isPreorder (≈-sym x≈y)
+      ... | _        | inj₁ y≤x = y≤x
+      ... | no  x≉y  | inj₂ x≤y = contradiction (≤∧≉⇒< (x≤y , x≉y)) x≮y
+
+    open HasTotalOrder ⦃...⦄
+
+    record HasDecTotalOrder : Set (suc a) where
+      field
+        ⦃ hasTotalOrder ⦄ : HasTotalOrder
         ⦃ dec-≤ ⦄ : _≤_ ⁇²
         ⦃ dec-< ⦄ : _<_ ⁇²
 
@@ -95,10 +124,14 @@ module _ {a} {A : Set a} where
   HasDecPreorder≡     = HasDecPreorder {_≈_ = _≡_}
   HasPartialOrder≡    = HasPartialOrder {_≈_ = _≡_}
   HasDecPartialOrder≡ = HasDecPartialOrder {_≈_ = _≡_}
+  HasTotalOrder≡      = HasTotalOrder {_≈_ = _≡_}
+  HasDecTotalOrder≡   = HasDecTotalOrder {_≈_ = _≡_}
 
 open HasPreorder ⦃...⦄ public
 open HasPartialOrder ⦃...⦄ public hiding (hasPreorder)
 open HasDecPartialOrder ⦃...⦄ public hiding (hasPartialOrder)
+open HasTotalOrder ⦃...⦄ public hiding (hasPartialOrder)
+open HasDecTotalOrder ⦃...⦄ public hiding (hasTotalOrder)
 
 module _ {a} {A : Set a} {_≈_ : Rel A a} where
 
