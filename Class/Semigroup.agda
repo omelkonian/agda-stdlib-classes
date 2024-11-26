@@ -1,4 +1,4 @@
-{-# OPTIONS --without-K #-}
+{-# OPTIONS --cubical-compatible #-}
 module Class.Semigroup where
 
 open import Class.Semigroup.Core public

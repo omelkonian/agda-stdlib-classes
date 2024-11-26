@@ -1,4 +1,4 @@
-{-# OPTIONS --without-K #-}
+{-# OPTIONS --cubical-compatible #-}
 module Class.Bifunctor where
 
 open import Class.Prelude hiding (A; B; C)

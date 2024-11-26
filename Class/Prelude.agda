@@ -1,12 +1,12 @@
-{-# OPTIONS --without-K #-}
+{-# OPTIONS --cubical-compatible #-}
 module Class.Prelude where
 
 open import Agda.Primitive public
   using () renaming (Set to Type; Setω to Typeω)
 open import Level public
   using (Level; _⊔_) renaming (suc to lsuc)
-open import Function public
-  using (id; _∘_; _∋_; _$_; const; constᵣ; flip; it)
+open import Function.Base public
+  using (id; _∘_; _∋_; _$_; const; constᵣ; flip; it; case_of_)
 
 open import Data.Empty public
   using (⊥; ⊥-elim)
@@ -44,7 +44,7 @@ open import Data.These public
   using (These; this; that; these)
 
 open import Relation.Nullary public
-  using (¬_; Dec; yes; no)
+  using (¬_; Dec; yes; no; contradiction)
 open import Relation.Nullary.Decidable public
   using (⌊_⌋; dec-yes; isYes)
 open import Relation.Unary public
@@ -54,7 +54,7 @@ open import Relation.Binary public
   using (REL; Rel; DecidableEquality)
   renaming (Decidable to Decidable²)
 module _ {a b c} where
-  3REL : (A : Set a) (B : Set b) (C : Set c) (ℓ : Level) → Type _
+  3REL : (A : Type a) (B : Type b) (C : Type c) (ℓ : Level) → Type _
   3REL A B C ℓ = A → B → C → Type ℓ
 
   Decidable³ : ∀ {A B C ℓ} → 3REL A B C ℓ → Type _
@@ -66,7 +66,7 @@ open import Reflection public
   using (TC; Arg; Abs)
 
 variable
-  ℓ ℓ′ ℓ″ : Level
+  ℓ ℓ′ ℓ″ ℓ‴ : Level
   A B C : Type ℓ
 
 module Alg (_~_ : Rel A ℓ) where

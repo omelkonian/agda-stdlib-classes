@@ -1,21 +1,14 @@
-{-# OPTIONS --safe #-}
+{-# OPTIONS --without-K #-}
 module Class.ToBool where
 
-open import Level
-open import Data.Bool using (Bool; true; false)
-open import Data.Sum
-open import Function
-open import Data.Unit.Polymorphic
-open import Relation.Binary.PropositionalEquality
-open import Relation.Nullary
-open import Data.Maybe
+open import Class.Prelude hiding (if_then_else_; ⊤; tt)
+open import Data.Unit.Polymorphic using (⊤; tt)
 open import Class.Decidable.Core
 
 private variable
-  ℓ ℓ′ : Level
-  X : Set ℓ; P : X → Set ℓ
+  X : Type ℓ; P : X → Type ℓ
 
-record ToBool′ (A : Set ℓ) (P 𝕋 𝔽 : A → Set ℓ′) : Set (ℓ ⊔ ℓ′) where
+record ToBool′ (A : Type ℓ) (P 𝕋 𝔽 : A → Type ℓ′) : Type (ℓ ⊔ ℓ′) where
   field decide : (a : A) → ⦃ P a ⦄ → 𝕋 a ⊎ 𝔽 a
 
   infix -10 if_then_else_
@@ -29,7 +22,7 @@ record ToBool′ (A : Set ℓ) (P 𝕋 𝔽 : A → Set ℓ′) : Set (ℓ ⊔ �
   toBool a = if a then true else false
 open ToBool′ ⦃...⦄ public
 
-ToBool : (A : Set ℓ) (𝕋 𝔽 : A → Set ℓ′) → Set (ℓ ⊔ ℓ′)
+ToBool : (A : Type ℓ) (𝕋 𝔽 : A → Type ℓ′) → Type (ℓ ⊔ ℓ′)
 ToBool {ℓ} A = ToBool′ A (λ _ → ⊤)
 
 instance
@@ -48,5 +41,5 @@ instance
     (just x) → inj₁ x
     nothing  → inj₂ tt
 
-  ToBool-⁇ : ToBool′ (Set ℓ) _⁇ id ¬_
+  ToBool-⁇ : ToBool′ (Type ℓ) _⁇ id ¬_
   ToBool-⁇ .decide _ = decide dec ⦃ _ ⦄

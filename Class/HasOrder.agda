@@ -1,5 +1,3 @@
-{-# OPTIONS --safe #-}
-
 module Class.HasOrder where
 
 open import Class.HasOrder.Core public
