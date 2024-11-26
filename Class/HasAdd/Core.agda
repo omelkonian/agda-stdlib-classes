@@ -1,8 +1,10 @@
-{-# OPTIONS --safe --cubical-compatible #-}
+{-# OPTIONS --cubical-compatible #-}
 module Class.HasAdd.Core where
 
-record HasAdd (A : Set) : Set where
+open import Class.Prelude
+
+record HasAdd (A : Type ℓ) : Type ℓ where
   infixl 6 _+_
   field _+_ : A → A → A
 
-open HasAdd ⦃ ... ⦄ public
+open HasAdd ⦃...⦄ public

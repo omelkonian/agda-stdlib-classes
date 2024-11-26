@@ -1,30 +1,28 @@
-{-# OPTIONS --safe #-}
-
+{-# OPTIONS --without-K #-}
 module Class.HasOrder.Core where
 
+open import Class.Prelude
 open import Class.Decidable
-open import Data.Empty
-open import Data.Product
-open import Data.Sum
-open import Function
-open import Level
-open import Relation.Binary
-open import Relation.Binary using () renaming (Decidable to Decidable²)
-open import Relation.Binary.PropositionalEquality
-open import Relation.Nullary
+open import Function.Bundles using (module Equivalence; mk⇔; _⇔_)
+open import Relation.Binary using
+  ( IsPreorder; IsPartialOrder; IsEquivalence; Total; IsTotalOrder
+  ; IsStrictTotalOrder; IsStrictPartialOrder
+  ; Irreflexive; Antisymmetric; Asymmetric; Transitive
+  )
 
 open Equivalence
 
-module _ {a} {A : Set a} where
-  module _ {_≈_ : Rel A a} where
+module _ {A : Type ℓ} where
+  module _ {_≈_ : Rel A ℓ′} {ℓ″ ℓ‴} (let 𝐿 = lsuc ℓ ⊔ ℓ′ ⊔ lsuc ℓ″ ⊔ lsuc ℓ‴) where
 
-    record HasPreorder : Set (suc a) where
+    record HasPreorder : Type 𝐿 where
       infix 4 _≤_ _<_ _≥_ _>_
       field
-        _≤_ _<_       : Rel A a
+        _≤_           : Rel A ℓ″
+        _<_           : Rel A ℓ‴
         ≤-isPreorder  : IsPreorder _≈_ _≤_
         <-irrefl      : Irreflexive _≈_ _<_
-        ≤⇔<∨≈         : ∀ {x y} → x ≤ y ⇔ (x < y ⊎ x ≈ y)
+        ≤⇔<∨≈         : ∀ {x y : A} → x ≤ y ⇔ (x < y ⊎ x ≈ y)
 
       _≥_ = flip _≤_
       _>_ = flip _<_
@@ -33,10 +31,10 @@ module _ {a} {A : Set a} where
         using ()
         renaming (isEquivalence to ≈-isEquivalence; refl to ≤-refl; trans to ≤-trans)
 
-      _≤?_ : ⦃ _≤_ ⁇² ⦄ → Decidable _≤_
+      _≤?_ : ⦃ _≤_ ⁇² ⦄ → Decidable² _≤_
       _≤?_ = dec²
 
-      _<?_ : ⦃ _<_ ⁇² ⦄ → Decidable _<_
+      _<?_ : ⦃ _<_ ⁇² ⦄ → Decidable² _<_
       _<?_ = dec²
 
       infix 4 _<?_ _≤?_
@@ -55,12 +53,12 @@ module _ {a} {A : Set a} where
 
     open HasPreorder ⦃...⦄
 
-    record HasDecPreorder : Set (suc a) where
+    record HasDecPreorder : Type 𝐿 where
       field ⦃ hasPreorder ⦄ : HasPreorder
             ⦃ dec-≤ ⦄ : _≤_ ⁇²
             ⦃ dec-< ⦄ : _<_ ⁇²
 
-    record HasPartialOrder : Set (suc a) where
+    record HasPartialOrder : Type 𝐿 where
       field
         ⦃ hasPreorder ⦄ : HasPreorder
         ≤-antisym : Antisymmetric _≈_ _≤_
@@ -90,13 +88,13 @@ module _ {a} {A : Set a} where
 
     open HasPartialOrder ⦃...⦄
 
-    record HasDecPartialOrder : Set (suc a) where
+    record HasDecPartialOrder : Type 𝐿 where
       field
         ⦃ hasPartialOrder ⦄ : HasPartialOrder
         ⦃ dec-≤ ⦄ : _≤_ ⁇²
         ⦃ dec-< ⦄ : _<_ ⁇²
 
-    record HasTotalOrder : Set (suc a) where
+    record HasTotalOrder : Type 𝐿 where
       field
         ⦃ hasPartialOrder ⦄ : HasPartialOrder
         ≤-total : Total _≤_
@@ -106,7 +104,7 @@ module _ {a} {A : Set a} where
 
       open IsEquivalence ≈-isEquivalence renaming (sym to ≈-sym)
 
-      ≮⇒≥ : Decidable _≈_ → ∀ {x y} → ¬ (x < y) → y ≤ x
+      ≮⇒≥ : Decidable² _≈_ → ∀ {x y} → ¬ (x < y) → y ≤ x
       ≮⇒≥ _≈?_ {x} {y} x≮y with x ≈? y | ≤-total y x
       ... | yes x≈y  | _        = IsPreorder.reflexive ≤-isPreorder (≈-sym x≈y)
       ... | _        | inj₁ y≤x = y≤x
@@ -114,7 +112,7 @@ module _ {a} {A : Set a} where
 
     open HasTotalOrder ⦃...⦄
 
-    record HasDecTotalOrder : Set (suc a) where
+    record HasDecTotalOrder : Type 𝐿 where
       field
         ⦃ hasTotalOrder ⦄ : HasTotalOrder
         ⦃ dec-≤ ⦄ : _≤_ ⁇²
@@ -133,9 +131,9 @@ open HasDecPartialOrder ⦃...⦄ public hiding (hasPartialOrder)
 open HasTotalOrder ⦃...⦄ public hiding (hasPartialOrder)
 open HasDecTotalOrder ⦃...⦄ public hiding (hasTotalOrder)
 
-module _ {a} {A : Set a} {_≈_ : Rel A a} where
+module _ {A : Type ℓ} {_≈_ : Rel A ℓ′} where
 
-  module _ {_≤_ : Rel A a} where
+  module _ {_≤_ : Rel A ℓ″} where
     import Relation.Binary.Construct.NonStrictToStrict _≈_ _≤_ as SNS
 
     module _ (≤-isPreorder : IsPreorder _≈_ _≤_)
@@ -158,7 +156,7 @@ module _ {a} {A : Set a} {_≈_ : Rel A a} where
         ; ≤-antisym = antsym
         }
 
-  module _ {_<_ : Rel A a} where
+  module _ {_<_ : Rel A ℓ″} where
 
     import Relation.Binary.Construct.StrictToNonStrict _≈_ _<_ as SNS
 
@@ -180,7 +178,6 @@ module _ {a} {A : Set a} {_≈_ : Rel A a} where
           { hasPreorder = hasPreorderFromStrictPartialOrder
           ; ≤-antisym = SNS.isPartialOrder <-isStrictPartialOrder .IsPartialOrder.antisym
           }
-
 
     module _ (<-isStrictTotalOrder : IsStrictTotalOrder _≈_ _<_) where
 

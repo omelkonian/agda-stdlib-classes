@@ -5,7 +5,7 @@ open import Class.Prelude
 open import Class.Decidable
 open import Class.DecEq
 
-module _ {ℓ} {A : Set ℓ} where
+module _ {ℓ} {A : Type ℓ} where
   open import Data.Maybe
   _ = Is-just    {A = A} ⁇¹
   _ = Is-nothing {A = A} ⁇¹

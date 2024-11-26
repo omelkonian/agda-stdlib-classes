@@ -1,4 +1,4 @@
-{-# OPTIONS --safe --without-K #-}
+{-# OPTIONS --cubical-compatible #-}
 
 module Class.CommutativeMonoid.Instances where
 

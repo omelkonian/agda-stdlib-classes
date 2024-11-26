@@ -1,5 +1,4 @@
-{-# OPTIONS --safe #-}
-
+{-# OPTIONS --without-K #-}
 module Class.HasOrder.Instance where
 
 open import Class.DecEq

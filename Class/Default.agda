@@ -2,7 +2,7 @@
 -- Types with a default value.
 ------------------------------------------------------------------------
 
-{-# OPTIONS --without-K #-}
+{-# OPTIONS --cubical-compatible #-}
 module Class.Default where
 
 open import Class.Prelude

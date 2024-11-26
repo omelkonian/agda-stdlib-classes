@@ -1,4 +1,4 @@
-{-# OPTIONS --safe --cubical-compatible #-}
+{-# OPTIONS --cubical-compatible #-}
 module Class.HasAdd where
 
 open import Class.HasAdd.Core public
