@@ -17,6 +17,9 @@ instance
   Allable-Maybe : Allable {ℓ} Maybe
   Allable-Maybe .All = M.All
 
+  Allable-List⁺ : Allable {ℓ} List⁺
+  Allable-List⁺ .All P = All P ∘ toList
+
 private
   open import Class.Decidable
   open import Class.HasOrder
