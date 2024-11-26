@@ -37,7 +37,7 @@ open import Data.Maybe public
 open import Data.List public
   using (List; []; _∷_; [_]; map; _++_; foldr; concat; concatMap)
 open import Data.List.NonEmpty public
-  using (List⁺; _∷_; _⁺++⁺_; foldr₁)
+  using (List⁺; _∷_; _⁺++⁺_; foldr₁; toList)
 open import Data.Vec public
   using (Vec; []; _∷_)
 open import Data.These public

@@ -17,6 +17,9 @@ instance
   Anyable-Maybe : Anyable {ℓ} Maybe
   Anyable-Maybe .Any = M.Any
 
+  Anyable-List⁺ : Anyable {ℓ} List⁺
+  Anyable-List⁺ .Any P = Any P ∘ toList
+
 private
   open import Class.Decidable
   open import Class.HasOrder
