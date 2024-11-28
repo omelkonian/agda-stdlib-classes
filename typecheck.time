@@ -46,8 +46,8 @@ Class/Default: 0m0s
 Class/HasAdd/Core: 0m0s
 Class/HasAdd/Instance: 0m0s
 Class/HasAdd: 0m0s
-Class/Show/Core: 0m1s
-Class/Show/Instances: 0m0s
+Class/Show/Core: 0m0s
+Class/Show/Instances: 0m1s
 Class/Show: 0m0s
 Class/ToBool: 0m0s
 Test/Monoid: 0m0s
