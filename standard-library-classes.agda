@@ -25,6 +25,7 @@ open import Class.HasAdd public
 open import Class.HasOrder public
 open import Class.Show public
 open import Class.ToBool public
+open import Class.MonotonePredicate -- probably too niche to be public?
 
 -- ** Tests
 open import Test.Monoid
